@@ -12,6 +12,7 @@ import javax.servlet.ServletRegistration;
 public class AjoWebApplicationInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
+		//启动IOC容器，相当于Web.xml中ContextLoaderLister的作用
 		AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
 		ac.register(AjoConfig.class);
 		ac.refresh();
@@ -20,5 +21,7 @@ public class AjoWebApplicationInitializer implements WebApplicationInitializer {
 		ServletRegistration.Dynamic registration = servletContext.addServlet("app", servlet);
 		registration.setLoadOnStartup(1);
 		registration.addMapping("/app/*");
+
+		//以上代码参考官方文档：https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
 	}
 }
