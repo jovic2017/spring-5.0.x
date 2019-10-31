@@ -17,6 +17,7 @@ public class AjoWebApplicationInitializer implements WebApplicationInitializer {
 		ac.register(AjoConfig.class);
 		ac.refresh();
 
+		//注册DispatcherServlet
 		DispatcherServlet servlet = new DispatcherServlet(ac);
 		ServletRegistration.Dynamic registration = servletContext.addServlet("app", servlet);
 		registration.setLoadOnStartup(1);
