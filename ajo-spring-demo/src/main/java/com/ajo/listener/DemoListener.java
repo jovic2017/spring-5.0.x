@@ -8,4 +8,8 @@ public class DemoListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("DemoListener loaded...");
 	}
+
+	public void contextDestroyed(ServletContextEvent sce) {
+		System.out.println("DemoListener destroy...");
+	}
 }

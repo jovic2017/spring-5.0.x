@@ -20,9 +20,9 @@ public class AjoServletContainInitializer implements ServletContainerInitializer
 	// Set<Class<?>> c ：所有HandlesTypes中Ajo接口的实现类
 	@Override
 	public void onStartup(Set<Class<?>> c, ServletContext ctx) throws ServletException {
-		List<Ajo> ajoList = new ArrayList();
+		List<Ajo> ajoList = new ArrayList<Ajo>();
 		if(c!=null){
-			for(Class ajoClass : c){
+			for(Class<?> ajoClass : c){
 				if(!ajoClass.isInterface() && !Modifier.isAbstract(ajoClass.getModifiers())){
 					try {
 						ajoList.add((Ajo)ajoClass.newInstance());
